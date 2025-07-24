@@ -1655,8 +1655,8 @@ function simpanData() {
       `;
       rekapDiv.style.display = "block"; // ✅ Tampilkan hanya setelah simpan
     }
-
-    google.script.run.withSuccessHandler(msg => alert(msg)).saveToSheet(data);
+ alert("Rekap simulasi berhasil.");
+    
   } catch (e) {
     console.error("Error simpanData():", e);
     alert("Terjadi kesalahan. Silakan periksa konsol.");
