@@ -1471,14 +1471,24 @@ function updateBaris(el) {
   const kelompok = Object.keys(kelompokMap).find(k => k.toLowerCase() === nama.toLowerCase());
   const kelompokJenis = kelompokMap[kelompok] || "RIMBA CAMPURAN";
 
-  let kelompokUtama = "RIMBA CAMPURAN";
-  if (kelompokJenis.includes("MERANTI")) {
-    kelompokUtama = "MERANTI";
-  } else if (kelompokJenis.includes("INDAH 1")) {
-    kelompokUtama = "INDAH 1";
-  } else if (kelompokJenis.includes("INDAH 2")) {
-    kelompokUtama = "INDAH 2";
-  }
+ let kelompokUtama = kelompok.toUpperCase().trim();
+if (kelompokUtama.includes("MERANTI")) {
+  kelompokUtama = "MERANTI";
+} else if (kelompokUtama.includes("INDAH 1 JATI")) {
+  kelompokUtama = "INDAH 1 Jati";
+} else if (
+  kelompokUtama.includes("INDAH 1") || 
+  kelompokUtama.includes("EBONI") // agar eboni, eboni hitam, eboni bergaris masuk INDAH 1
+) {
+  kelompokUtama = "INDAH 1";
+} else if (kelompokUtama.includes("INDAH 2")) {
+  kelompokUtama = "INDAH 2";
+} else if (kelompokUtama.includes("MERBAU")) {
+  kelompokUtama = "MERANTI MERBAU";
+} else {
+  kelompokUtama = "RIMBA CAMPURAN";
+}
+
 
   // Deteksi apakah jenis ini masuk kategori TBD
    const isTBD = /(MERANTI (Belangeran|Giam|Ki Sereh|Kulim|Merbau|Perupuk))|Cendana|Mentaos|Kayu Kuning|INDAH 1$|INDAH 2$/.test(kelompokJenis);
