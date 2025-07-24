@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalkulator LELANG KG</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0f6f0;
+      color: #333;
+    }
+    .wrapper {
+      margin: 20px auto;
+      padding: 20px;
+      border: 3px solid #997000;
+      border-radius: 12px;
+      background-color: #f7f8f6;
+      width: 95vw;
+      max-width: 98%;
+      box-sizing: border-box;
+      overflow-x: auto;
+    }
+    h2 {
+      color: #205b3c;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+    button {
+      background-color: #4d8533;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      margin: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #376327;
+    }
+    fieldset {
+      border: 1px solid #ccc;
+      padding: 12px;
+      background-color: #eaf2ea;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 15px;
+      background-color: #fefefe;
+    }
+    th {
+      background-color: #d7e6d4;
+      color: #205b3c;
+      padding: 8px;
+      text-align: center;
+    }
+    td {
+      padding: 6px;
+      text-align: center;
+      vertical-align: middle;
+    }
+    td input, td select {
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .button-row {
+      display: flex;
+      justify-content: flex-start;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .footer {
+      max-width: 1500px;
+      margin: 30px auto;
+      padding: 0 20px;
+      font-size: var(--font-size-footer);
+      color: #555;
+      text-align: justify;
+      line-height: 1.5;
+      box-sizing: border-box;
+    }
+    .footer ol {
+      margin-left: 0;
+      padding-left: 20px;
+    }
+    .rekap-box {
+      background-color: #f4f8f4;
+      border: 2px solid #4a7c59;
+      border-left: 8px solid #2e5339;
+      border-radius: 8px;
+      padding: 12px 20px;
+      margin-top: 20px;
+      color: #2e5339;
+      font-family: 'Segoe UI', sans-serif;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .rekap-box p {
+      margin: 5px 0;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      th, td {
+        font-size: 12px;
+        padding: 4px;
+      }
+      .button-row {
+        flex-direction: column;
+      }
+      button {
+        width: 100%;
+      }
+      table th,
+      table td {
+        text-align: center;
+        vertical-align: middle;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div style="background-color: #4CAF50;color: white;padding: 16px 24px;display: flex;justify-content: space-between;align-items: center;font-family: 'Segoe UI', 'Roboto', sans-serif;margin-bottom: 30px;">
+      <div style="font-size: 24px; font-weight: 600;">KALKULATOR LELANG KAYU GERGAJIAN</div>
+      <div style="text-align: right; line-height: 1.2;">
+        <div style="font-size: 20px; font-weight: 700; letter-spacing: 4px; padding-right: 2px;">DITJEN PHL</div>
+        <div style="font-size: 20px; font-weight: 800; letter-spacing: 2px;">KEMENHUT</div>
+      </div>
+    </div>
+
+    <div id="kontainerIdentitas">
+      <label>Nama Pelaku Usaha:
+        <input type="text" id="namaPelakuUsaha">
+      </label><br>
+      <label>Provinsi:
+        <select id="provinsi">
+          <option value="">-- Pilih Provinsi --</option>
+          <option>Aceh</option>
+          <option>Sumatera Utara</option>
+          <option>Sumatera Barat</option>
+          <option>Riau</option>
+          <option>Jambi</option>
+          <option>Sumatera Selatan</option>
+          <option>Bengkulu</option>
+          <option>Lampung</option>
+          <option>Kepulauan Bangka Belitung</option>
+          <option>Kepulauan Riau</option>
+          <option>DKI Jakarta</option>
+          <option>Jawa Barat</option>
+          <option>Jawa Tengah</option>
+          <option>DI Yogyakarta</option>
+          <option>Jawa Timur</option>
+          <option>Banten</option>
+          <option>Bali</option>
+          <option>Nusa Tenggara Barat</option>
+          <option>Nusa Tenggara Timur</option>
+          <option>Kalimantan Barat</option>
+          <option>Kalimantan Tengah</option>
+          <option>Kalimantan Selatan</option>
+          <option>Kalimantan Timur</option>
+          <option>Kalimantan Utara</option>
+          <option>Sulawesi Utara</option>
+          <option>Sulawesi Tengah</option>
+          <option>Sulawesi Selatan</option>
+          <option>Sulawesi Tenggara</option>
+          <option>Gorontalo</option>
+          <option>Sulawesi Barat</option>
+          <option>Maluku</option>
+          <option>Maluku Utara</option>
+          <option>Papua</option>
+          <option>Papua Barat</option>
+          <option>Papua Tengah</option>
+          <option>Papua Pegunungan</option>
+          <option>Papua Barat Daya</option>
+          <option>Papua Selatan</option>
+        </select>
+      </label><br>
+      <label>Asal Kayu:
+        <select id="asalKayu">
+          <option value="">-- Pilih --</option>
+          <option value="Tumbuh Alami">Tumbuh Alami</option>
+          <option value="Budidaya">Budidaya</option>
+        </select>
+      </label><br>
+      <label>Jenis Perizinan:
+        <select id="jenisPerizinan">
+          <option value="">-- Pilih --</option>
+          <option value="PBPH">PBPH</option>
+          <option value="PPKH">PPKH</option>
+          <option value="PPKKNK">PPKKNK</option>
+          <option value="PELEPASAN KH">PELEPASAN KH</option>
+          <option value="PHAT">PHAT</option>
+          <option value="PS">PS</option>
+        </select>
+      </label><br>
+      <label>Jenis Olahan:
+        <select id="jenisOlahan">
+          <option value="">-- Pilih --</option>
+          <option value="Kayu Lapis">Kayu Lapis</option>
+          <option value="Kayu Gergajian">Kayu Gergajian</option>
+          <option value="Kayu Pacakan">Kayu Pacakan</option>
+        </select>
+      </label><br><br>
+      <button id="btnLanjut" onclick="lanjutKontainer()">Lanjut</button>
+    </div>
+
+    <!-- Tempat munculnya form lanjut -->
+    <div id="kontainerInput" style="display: none;"></div>
+    <div id="tabelHasilLelang" class="rekap-box" style="margin-top: 20px; display: none;"></div>
+    <div class="footer">
+      <p><strong>Disclaimer:</strong></p> PSDH-DR dan Nilai Lelang yang dihasilkan merupakan Hasil Simulasi Perhitungan 
+      <p><strong>Berdasarkan:</strong></p>
+      <ol>
+        <li>Peraturan Pemerintah Nomor 36 Tahun 2024 Tentang Jenis dan Tarif Atas Jenis Penerimaan Negara Bukan Pajak Yang Berlaku Pada Kementerian Lingkungan Hidup Dan Kehutanan</li>
+        <li>Peraturan Menteri Kehutanan Nomor 2 Tahun 2025 Tentang Harga Patokan Hasil Hutan Kayu Dan Hasil Hutan Bukan Kayu Untuk Penghitungan Penerimaan Negara Bukan Pajak</li>
+        <li>Peraturan Menteri Kehutanan Nomor 47/Menhut-II/2008 Tentang Penetapan Harga Limit Lelang Hasil Kayu dan Bukan Kayu</li>
+        <li>Surat Keputusan Menteri Kehutanan Nomor SK.346/Menhut-II/2006 Tentang Penetapan Besarnya Biaya Persiapan Lelang Hasil Hutan Kayu Temuan, Sitaan, dan Rampasan</li>
+      </ol>
+    </div>
+    <div class="footer copyright">
+      <p style="text-align:center; margin-top: 30px; font-size: 12px; color: #666;">
+        &copy; 2025 BPHL 8 Surabaya | Kementerian Kehutanan
+      </p>
+    </div>
+  </div>
+  <!-- Paste seluruh JS kamu DI SINI, sudah bersih (tanpa google.script.run, tanpa Apps Script, tanpa saveToSheet, tanpa include) -->
+  <script>
+    // <script>
+
+const kelompokMap = {
+  // MERANTI
+  "Agathis": "MERANTI",
+  "Balau": "MERANTI",
+  "Balau Merah": "MERANTI",
+  "Bangkirai": "MERANTI",
+  "Balangeran": "MERANTI Balangeran",
+  "Damar": "MERANTI",
+  "Durian": "MERANTI",
+  "Gia": "MERANTI",
+  "Giam": "MERANTI Giam",
+  "Jelutung": "MERANTI",
+  "Kapur": "MERANTI",
+  "Kapur Petanang": "MERANTI",
+  "Kenari": "MERANTI",
+  "Keruing": "MERANTI",
+  "Ki Sereh": "MERANTI Ki Sereh",
+  "Kulim": "MERANTI Kulim",
+  "Lembasung": "MERANTI",
+  "Malapari": "MERANTI",
+  "Matoa": "MERANTI",
+  "Medang (MR)": "MERANTI",
+  "Meranti Batu": "MERANTI",
+  "Meranti Kuning": "MERANTI",
+  "Meranti Merah": "MERANTI",
+  "Meranti Putih": "MERANTI",
+  "Merawan": "MERANTI",
+  "Merbau": "MERANTI Merbau",
+  "Mersawa": "MERANTI",
+  "Nyatoh": "MERANTI",
+  "Palapi": "MERANTI",
+  "Pelawan": "MERANTI",
+  "Penjalin": "MERANTI",
+  "Perupuk": "MERANTI Perupuk",
+  "Pinang": "MERANTI",
+  "Pulai": "MERANTI",
+  "Rasamala": "MERANTI",
+  "Resak": "MERANTI",
+  "Sarangan Batu": "MERANTI",
+  "Semantok": "MERANTI",
+  "Kelompok Jenis Meranti lainnya": "MERANTI",
+
+  // INDAH 1
+  "Eboni Bergaris": "INDAH 1",
+  "Eboni Hitam": "INDAH 1",
+  "Eboni": "INDAH 1",
+  "Jati": "INDAH 1 Jati",
+
+  // INDAH 2
+  "Bongin": "INDAH 2",
+  "Bungur": "INDAH 2",
+  "Cempaka": "INDAH 2",
+  "Cempaka Alas": "INDAH 2",
+  "Cempaka Jati": "INDAH 2",
+  "Cendana Gubal": "INDAH 2 Cendana Gubal",
+  "Cendana Teras": "INDAH 2 Cendana Teras",
+  "Dahu": "INDAH 2",
+  "Jati Seberang": "INDAH 2",
+  "Johar": "INDAH 2",
+  "Kendal": "INDAH 2",
+  "Kihiyang": "INDAH 2",
+  "Kuku": "INDAH 2",
+  "Kupang": "INDAH 2",
+  "Lasi": "INDAH 2",
+  "Mahoni": "INDAH 2",
+  "Melur": "INDAH 2",
+  "Membacang": "INDAH 2",
+  "Mentaos": "INDAH 2 Mentaos",
+  "Mindi": "INDAH 2",
+  "Nyirih": "INDAH 2",
+  "Paru-Paru": "INDAH 2",
+  "Pasang": "INDAH 2",
+  "Perepat Darat": "INDAH 2",
+  "Raja Bunga": "INDAH 2",
+  "Ramin": "INDAH 2",
+  "Rengas": "INDAH 2",
+  "Rengas Burung": "INDAH 2",
+  "Salimuli": "INDAH 2",
+  "Santang": "INDAH 2",
+  "Sawo Kecik": "INDAH 2",
+  "Sempetir": "INDAH 2",
+  "Sindur": "INDAH 2",
+  "Sonobrits": "INDAH 2",
+  "Sonokeling": "INDAH 2",
+  "Sonokembang": "INDAH 2",
+  "Sungkai": "INDAH 2",
+  "Tanjung": "INDAH 2",
+  "Tapos": "INDAH 2",
+  "Tinjau Belukar": "INDAH 2",
+  "Torem": "INDAH 2",
+  "Trembesi": "INDAH 2",
+  "Ulin": "INDAH 2",
+  "Weru": "INDAH 2",
+  "Kelompok Jenis INDAH 2 Lainnya": "INDAH 2",
+
+  // RIMBA CAMPURAN
+  "Acasia Auricoliformis": "RIMBA CAMPURAN",
+  "Accasia Mangium": "RIMBA CAMPURAN",
+  "Angsana": "RIMBA CAMPURAN",
+  "Ara": "RIMBA CAMPURAN",
+  "Asem-Asem": "RIMBA CAMPURAN",
+  "Bakau": "RIMBA CAMPURAN",
+  "Balsa": "RIMBA CAMPURAN",
+  "Banggeris": "RIMBA CAMPURAN",
+  "Banitan": "RIMBA CAMPURAN",
+  "Bayur": "RIMBA CAMPURAN",
+  "Bendo": "RIMBA CAMPURAN",
+  "Benuang": "RIMBA CAMPURAN",
+  "Berumbung": "RIMBA CAMPURAN",
+  "Bintangur": "RIMBA CAMPURAN",
+  "Bipa": "RIMBA CAMPURAN",
+  "Bowoi": "RIMBA CAMPURAN",
+  "Bugis": "RIMBA CAMPURAN",
+  "Cemara": "RIMBA CAMPURAN",
+  "Cenge": "RIMBA CAMPURAN",
+  "Dara-dara": "RIMBA CAMPURAN",
+  "Dlisem": "RIMBA CAMPURAN",
+  "Duabanga": "RIMBA CAMPURAN",
+  "Ekaliptus": "RIMBA CAMPURAN",
+  "Flamboyan": "RIMBA CAMPURAN",
+  "Gamal": "RIMBA CAMPURAN",
+  "Gelam": "RIMBA CAMPURAN",
+  "Gempol": "RIMBA CAMPURAN",
+  "Gerunggang": "RIMBA CAMPURAN",
+  "Gmelina": "RIMBA CAMPURAN",
+  "Gopasa": "RIMBA CAMPURAN",
+  "Jabon": "RIMBA CAMPURAN",
+  "Jambu-jambu": "RIMBA CAMPURAN",
+  "Jengkol": "RIMBA CAMPURAN",
+  "Jering": "RIMBA CAMPURAN",
+  "Juwet": "RIMBA CAMPURAN",
+  "Kamiri": "RIMBA CAMPURAN",
+  "Kapas-kapasan": "RIMBA CAMPURAN",
+  "Karet": "RIMBA CAMPURAN",
+  "Kayu Batu": "RIMBA CAMPURAN",
+  "Kayu Kereta": "RIMBA CAMPURAN",
+  "Kayu Kuning": "RIMBA CAMPURAN Kayu Kuning",
+  "Kecapi": "RIMBA CAMPURAN",
+  "Kecik": "RIMBA CAMPURAN",
+  "Kedondong Hutan": "RIMBA CAMPURAN",
+  "Kelempayan": "RIMBA CAMPURAN",
+  "Kelumpang": "RIMBA CAMPURAN",
+  "Kembang Semangkok": "RIMBA CAMPURAN",
+  "Kempas": "RIMBA CAMPURAN",
+  "Kenanga": "RIMBA CAMPURAN",
+  "Kepoh": "RIMBA CAMPURAN",
+  "Keranji": "RIMBA CAMPURAN",
+  "Kesambi": "RIMBA CAMPURAN",
+  "Ketangi": "RIMBA CAMPURAN",
+  "Ketapang": "RIMBA CAMPURAN",
+  "Ketimunan": "RIMBA CAMPURAN",
+  "Klampis": "RIMBA CAMPURAN",
+  "Lamtoro": "RIMBA CAMPURAN",
+  "Lancat": "RIMBA CAMPURAN",
+  "Lara": "RIMBA CAMPURAN",
+  "Lokus": "RIMBA CAMPURAN",
+  "Maesopsis": "RIMBA CAMPURAN",
+  "Mahang": "RIMBA CAMPURAN",
+  "Mangir": "RIMBA CAMPURAN",
+  "Medang": "RIMBA CAMPURAN",
+  "Melaleuca": "RIMBA CAMPURAN",
+  "Mempisang": "RIMBA CAMPURAN",
+  "Mendarahan": "RIMBA CAMPURAN",
+  "Menjalin": "RIMBA CAMPURAN",
+  "Mentibu": "RIMBA CAMPURAN",
+  "Merambung": "RIMBA CAMPURAN",
+  "Mimba/Mimbo": "RIMBA CAMPURAN",
+  "Nangka": "RIMBA CAMPURAN",
+  "Pasak linggo": "RIMBA CAMPURAN",
+  "Pelawan": "RIMBA CAMPURAN",
+  "Petai":"RIMBA CAMPURAN",
+  "Pilang": "RIMBA CAMPURAN",
+  "Pinus": "RIMBA CAMPURAN",
+  "Punak": "RIMBA CAMPURAN",
+  "Puspa": "RIMBA CAMPURAN",
+  "Randu": "RIMBA CAMPURAN",
+  "Rekisi": "RIMBA CAMPURAN",
+  "Rengas Tembaga": "RIMBA CAMPURAN",
+  "Salam": "RIMBA CAMPURAN",
+  "Saninten": "RIMBA CAMPURAN",
+  "Segawe": "RIMBA CAMPURAN",
+  "Semangkok": "RIMBA CAMPURAN",
+  "Sengon": "RIMBA CAMPURAN",
+  "Sengon Buto/Jowo": "RIMBA CAMPURAN",
+  "Sentang": "RIMBA CAMPURAN",
+  "Sepat": "RIMBA CAMPURAN",
+  "Sesendok": "RIMBA CAMPURAN",
+  "Simpur": "RIMBA CAMPURAN",
+  "Sogo": "RIMBA CAMPURAN",
+  "Surian": "RIMBA CAMPURAN",
+  "Tales": "RIMBA CAMPURAN",
+  "Talok": "RIMBA CAMPURAN",
+  "Tekik": "RIMBA CAMPURAN",
+  "Tembesu": "RIMBA CAMPURAN",
+  "Tempinis": "RIMBA CAMPURAN",
+  "Tenggayun": "RIMBA CAMPURAN",
+  "Tepis": "RIMBA CAMPURAN",
+  "Terap": "RIMBA CAMPURAN",
+  "Terentang": "RIMBA CAMPURAN",
+  "Terentang Ayam": "RIMBA CAMPURAN",
+  "Trenguli": "RIMBA CAMPURAN",
+  "Utup": "RIMBA CAMPURAN",
+  "Waru": "RIMBA CAMPURAN",
+  "Winong": "RIMBA CAMPURAN",
+  "Wunggu": "RIMBA CAMPURAN",
+  "Kelompok Jenis Rimba Campuran Lainnya": "RIMBA CAMPURAN"
+};
+
+const provinsiToRegion = {
+  "Aceh": "Sumatra",
+  "Sumatera Utara": "Sumatra",
+  "Sumatera Barat": "Sumatra",
+  "Riau": "Sumatra",
+  "Jambi": "Sumatra",
+  "Sumatera Selatan": "Sumatra",
+  "Bengkulu": "Sumatra",
+  "Lampung": "Sumatra",
+  "Kepulauan Bangka Belitung": "Sumatra",
+  "Kepulauan Riau": "Sumatra",
+
+  "DKI Jakarta": "Jawa dan Madura",
+  "Jawa Barat": "Jawa dan Madura",
+  "Jawa Tengah": "Jawa dan Madura",
+  "DI Yogyakarta": "Jawa dan Madura",
+  "Jawa Timur": "Jawa dan Madura",
+  "Banten": "Jawa dan Madura",
+  "Madura": "Jawa dan Madura", // if needed
+
+  "Bali": "Bali dan Nusa Tenggara",
+  "Nusa Tenggara Barat": "Bali dan Nusa Tenggara",
+  "Nusa Tenggara Timur": "Bali dan Nusa Tenggara",
+
+  "Kalimantan Barat": "Kalimantan",
+  "Kalimantan Tengah": "Kalimantan",
+  "Kalimantan Selatan": "Kalimantan",
+  "Kalimantan Timur": "Kalimantan",
+  "Kalimantan Utara": "Kalimantan",
+
+  "Sulawesi Utara": "Sulawesi",
+  "Sulawesi Tengah": "Sulawesi",
+  "Sulawesi Selatan": "Sulawesi",
+  "Sulawesi Tenggara": "Sulawesi",
+  "Gorontalo": "Sulawesi",
+  "Sulawesi Barat": "Sulawesi",
+
+  "Maluku": "Maluku",
+  "Maluku Utara": "Maluku",
+
+  "Papua": "Papua",
+  "Papua Barat": "Papua",
+  "Papua Tengah": "Papua",
+  "Papua Pegunungan": "Papua",
+  "Papua Barat Daya": "Papua",
+  "Papua Selatan": "Papua"
+};
+
+const hargaPatokan = {
+  "Tumbuh Alami":{
+    "Jawa dan Madura":{
+      "MERANTI": { "KBB": 690000, "KBS": 670000, "KBK": 310000 },
+      "MERANTI Merbau": { "TBD": 1850000 },
+      "MERANTI Balangeran": { "TBD": 810000 },
+      "MERANTI Giam": { "TBD": 810000 },
+      "MERANTI Ki Sereh": { "TBD": 810000 },
+      "MERANTI Kulim": { "TBD": 810000 },
+      "MERANTI Perupuk": { "TBD": 810000 },
+      "INDAH 1": { "TBD": 9200000 },
+      "INDAH 1 Jati": { "KBB": 3500000, "KBS": 1900000, "KBK": 1000000 },
+      "INDAH 2": { "TBD": 1550000 },
+      "INDAH 2 Cendana Gubal": { "TBD": 1100000 },
+      "INDAH 2 Cendana Teras": { "TBD": 10650000 },
+      "INDAH 2 Mentaos": { "TBD": 810000 },
+      "RIMBA CAMPURAN": { "KBB": 390000, "KBS": 370000, "KBK": 310000 },
+      "RIMBA CAMPURAN Kayu Kuning": { "TBD": 760000 }
+    },
+    "Sumatra":{
+      "MERANTI": { "KBB": 690000, "KBS": 670000, "KBK": 310000 },
+      "MERANTI Merbau": { "TBD": 1850000 },
+      "MERANTI Balangeran": { "TBD": 810000 },
+      "MERANTI Giam": { "TBD": 810000 },
+      "MERANTI Ki Sereh": { "TBD": 810000 },
+      "MERANTI Kulim": { "TBD": 810000 },
+      "MERANTI Perupuk": { "TBD": 810000 },
+      "INDAH 1": { "TBD": 9200000 },
+      "INDAH 1 Jati": { "KBB": 2000000, "KBS": 1000000, "KBK": 800000 },
+      "INDAH 2": { "TBD": 1550000 },
+      "INDAH 2 Cendana Gubal": { "TBD": 1100000 },
+      "INDAH 2 Cendana Teras": { "TBD": 10650000 },
+      "INDAH 2 Mentaos": { "TBD": 810000 },
+      "RIMBA CAMPURAN": { "KBB": 390000, "KBS": 370000, "KBK": 310000 },
+      "RIMBA CAMPURAN Kayu Kuning": { "TBD": 760000 }
+    },
+    "Bali dan Nusa Tenggara":{
+      "MERANTI": { "KBB": 690000, "KBS": 670000, "KBK": 310000 },
+      "MERANTI Merbau": { "TBD": 1850000 },
+      "MERANTI Balangeran": { "TBD": 810000 },
+      "MERANTI Giam": { "TBD": 810000 },
+      "MERANTI Ki Sereh": { "TBD": 810000 },
+      "MERANTI Kulim": { "TBD": 810000 },
+      "MERANTI Perupuk": { "TBD": 810000 },
+      "INDAH 1": { "TBD": 9200000 },
+      "INDAH 1 Jati": { "KBB": 3500000, "KBS": 1900000, "KBK": 1200000 },
+      "INDAH 2": { "TBD": 1550000 },
+      "INDAH 2 Cendana Gubal": { "TBD": 1100000 },
+      "INDAH 2 Cendana Teras": { "TBD": 10650000 },
+      "INDAH 2 Mentaos": { "TBD": 810000 },
+      "RIMBA CAMPURAN": { "KBB": 390000, "KBS": 370000, "KBK": 310000 },
+      "RIMBA CAMPURAN Kayu Kuning": { "TBD": 760000 }
+    },
+    "Kalimantan":{
+      "MERANTI": { "KBB": 810000, "KBS": 780000, "KBK": 310000 },
+      "MERANTI Merbau": { "TBD": 1850000 },
+      "MERANTI Balangeran": { "TBD": 810000 },
+      "MERANTI Giam": { "TBD": 810000 },
+      "MERANTI Ki Sereh": { "TBD": 810000 },
+      "MERANTI Kulim": { "TBD": 810000 },
+      "MERANTI Perupuk": { "TBD": 810000 },
+      "INDAH 1": { "TBD": 9200000 },
+      "INDAH 1 Jati": { "KBB": 2000000, "KBS": 1000000, "KBK": 800000 },
+      "INDAH 2": { "TBD": 1550000 },
+      "INDAH 2 Cendana Gubal": { "TBD": 1100000 },
+      "INDAH 2 Cendana Teras": { "TBD": 10650000 },
+      "INDAH 2 Mentaos": { "TBD": 810000 },
+      "RIMBA CAMPURAN": { "KBB": 500000, "KBS": 480000, "KBK": 310000 },
+      "RIMBA CAMPURAN Kayu Kuning": { "TBD": 760000 }
+    },
+    "Sulawesi":{
+      "MERANTI": { "KBB": 690000, "KBS": 670000, "KBK": 310000 },
+      "MERANTI Merbau": { "TBD": 1850000 },
+      "MERANTI Balangeran": { "TBD": 810000 },
+      "MERANTI Giam": { "TBD": 810000 },
+      "MERANTI Ki Sereh": { "TBD": 810000 },
+      "MERANTI Kulim": { "TBD": 810000 },
+      "MERANTI Perupuk": { "TBD": 810000 },
+      "INDAH 1": { "TBD": 9200000 },
+      "INDAH 1 Jati": { "KBB": 3500000, "KBS": 1900000, "KBK": 1200000 },
+      "INDAH 2": { "TBD": 1550000 },
+      "INDAH 2 Cendana Gubal": { "TBD": 1100000 },
+      "INDAH 2 Cendana Teras": { "TBD": 10650000 },
+      "INDAH 2 Mentaos": { "TBD": 810000 },
+      "RIMBA CAMPURAN": { "KBB": 390000, "KBS": 370000, "KBK": 310000 },
+      "RIMBA CAMPURAN Kayu Kuning": { "TBD": 760000 }
+    },
+    "Maluku":{
+      "MERANTI": { "KBB": 810000, "KBS": 780000, "KBK": 310000 },
+      "MERANTI Merbau": { "TBD": 1850000 },
+      "MERANTI Balangeran": { "TBD": 810000 },
+      "MERANTI Giam": { "TBD": 810000 },
+      "MERANTI Ki Sereh": { "TBD": 810000 },
+      "MERANTI Kulim": { "TBD": 810000 },
+      "MERANTI Perupuk": { "TBD": 810000 },
+      "INDAH 1": { "TBD": 9200000 },
+      "INDAH 1 Jati": { "KBB": 2000000, "KBS": 1000000, "KBK": 800000 },
+      "INDAH 2": { "TBD": 1550000 },
+      "INDAH 2 Cendana Gubal": { "TBD": 1100000 },
+      "INDAH 2 Cendana Teras": { "TBD": 10650000 },
+      "INDAH 2 Mentaos": { "TBD": 810000 },
+      "RIMBA CAMPURAN": { "KBB": 500000, "KBS": 480000, "KBK": 310000 },
+      "RIMBA CAMPURAN Kayu Kuning": { "TBD": 760000 }
+    },
+    "Papua":{
+      "MERANTI": { "KBB": 690000, "KBS": 670000, "KBK": 310000 },
+      "MERANTI Merbau": { "TBD": 1850000 },
+      "MERANTI Balangeran": { "TBD": 810000 },
+      "MERANTI Giam": { "TBD": 810000 },
+      "MERANTI Ki Sereh": { "TBD": 810000 },
+      "MERANTI Kulim": { "TBD": 810000 },
+      "MERANTI Perupuk": { "TBD": 810000 },
+      "INDAH 1": { "TBD": 9200000 },
+      "INDAH 1 Jati": { "KBB": 3500000, "KBS": 1900000, "KBK": 1200000 },
+      "INDAH 2": { "TBD": 1550000 },
+      "INDAH 2 Cendana Gubal": { "TBD": 1100000 },
+      "INDAH 2 Cendana Teras": { "TBD": 10650000 },
+      "INDAH 2 Mentaos": { "TBD": 810000 },
+      "RIMBA CAMPURAN": { "KBB": 390000, "KBS": 370000, "KBK": 310000 },
+      "RIMBA CAMPURAN Kayu Kuning": { "TBD": 760000 }
+    }
+  },
+  "Budidaya":{
+    "Jawa dan Madura":{
+      override: {
+        "Agathis": { "KBB": 200000, "KBS": 180000, "KBK": 130000 },
+        "Damar": { "KBB": 200000, "KBS": 180000, "KBK": 130000 },
+        "Rasamala": { "KBB": 280000, "KBS": 200000, "KBK": 140000 },
+        "Mahoni": { "KBB": 580000, "KBS": 200000, "KBK": 130000 },
+        "Sonobrits": { "KBB": 580000, "KBS": 200000, "KBK": 130000 },
+        "Sonokeling": { "KBB": 1100000, "KBS": 760000, "KBK": 380000 },
+        "Acasia Auricoliformis": { "KBB": 200000, "KBS": 180000, "KBK": 130000 },
+        "Accasia Mangium": { "KBB": 200000, "KBS": 180000, "KBK": 130000 },
+        "Balsa": { "KBB": 200000, "KBS": 180000, "KBK": 130000 },
+        "Ekaliptus": { "KBB": 200000, "KBS": 180000, "KBK": 130000 },
+        "Gmelina": { "KBB": 200000, "KBS": 180000, "KBK": 130000 },
+        "Karet": { "KBB": 200000, "KBS": 180000, "KBK": 130000 },
+        "Pinus": { "KBB": 200000, "KBS": 180000, "KBK": 130000 },
+        "Sengon": { "KBB": 200000, "KBS": 180000, "KBK": 130000 },
+        "Sengon Buto/Jowo": { "KBB": 200000, "KBS": 180000, "KBK": 130000 }
+      },
+      "MERANTI": { "KBB": 690000, "KBS": 670000, "KBK": 310000 },
+      "MERANTI Merbau": { "TBD": 1850000 },
+      "MERANTI Balangeran": { "TBD": 810000 },
+      "MERANTI Giam": { "TBD": 810000 },
+      "MERANTI Ki Sereh": { "TBD": 810000 },
+      "MERANTI Kulim": { "TBD": 810000 },
+      "MERANTI Perupuk": { "TBD": 810000 },
+      "INDAH 1": { "TBD": 9200000 },
+      "INDAH 1 Jati": { "KBB": 3500000, "KBS": 1900000, "KBK": 1000000 },
+      "INDAH 2": { "TBD": 1550000 },
+      "INDAH 2 Cendana Gubal": { "TBD": 1100000 },
+      "INDAH 2 Cendana Teras": { "TBD": 10650000 },
+      "INDAH 2 Mentaos": { "TBD": 810000 },
+      "RIMBA CAMPURAN": { "KBB": 180000, "KBS": 130000, "KBK": 90000 },
+      "RIMBA CAMPURAN Kayu Kuning": { "TBD": 760000 }
+    },
+    "Sumatra":{
+      override: {
+        "Sungkai": { "TBD": 150000 },
+        "Acasia Auricoliformis": { "TBD": 140000 },
+        "Accasia Mangium": { "TBD": 140000 },
+        "Bakau": { "TBD": 135000 },
+        "Balsa": { "TBD": 90000 },
+        "Ekaliptus": { "TBD": 140000 },
+        "Gmelina": { "TBD": 105000 },
+        "Jabon": { "TBD": 140000 },
+        "Karet": { "TBD": 150000 },
+        "Pinus": { "TBD": 165000 },
+        "Sengon": { "TBD": 165000 },
+        "Sengon Buto/Jowo": { "TBD": 165000 },
+        "Waru": { "TBD": 115000 }
+      },
+      "MERANTI": { "KBB": 690000, "KBS": 670000, "KBK": 310000 },
+      "MERANTI Merbau": { "TBD": 1850000 },
+      "MERANTI Balangeran": { "TBD": 810000 },
+      "MERANTI Giam": { "TBD": 810000 },
+      "MERANTI Ki Sereh": { "TBD": 810000 },
+      "MERANTI Kulim": { "TBD": 810000 },
+      "MERANTI Perupuk": { "TBD": 810000 },
+      "INDAH 1": { "TBD": 9200000 },
+      "INDAH 1 Jati": { "KBB": 2000000, "KBS": 1000000, "KBK": 800000 },
+      "INDAH 2": { "TBD": 1550000 },
+      "INDAH 2 Cendana Gubal": { "TBD": 1100000 },
+      "INDAH 2 Cendana Teras": { "TBD": 10650000 },
+      "INDAH 2 Mentaos": { "TBD": 810000 },
+      "RIMBA CAMPURAN": { "KBB": 390000, "KBS": 370000, "KBK": 310000 },
+      "RIMBA CAMPURAN Kayu Kuning": { "TBD": 760000 }
+    },
+    "Bali dan Nusa Tenggara":{
+      override: {
+        "Jati": { "KBB": 3500000, "KBS": 1900000, "KBK": 1200000 },
+        "Sungkai": { "TBD": 150000 },
+        "Acasia Auricoliformis": { "TBD": 140000 },
+        "Accasia Mangium": { "TBD": 140000 },
+        "Bakau": { "TBD": 135000 },
+        "Balsa": { "TBD": 90000 },
+        "Ekaliptus": { "TBD": 140000 },
+        "Gmelina": { "TBD": 105000 },
+        "Jabon": { "TBD": 140000 },
+        "Karet": { "TBD": 150000 },
+        "Pinus": { "TBD": 165000 },
+        "Sengon": { "TBD": 165000 },
+        "Sengon Buto/Jowo": { "TBD": 165000 },
+        "Waru": { "TBD": 115000 }
+      },
+      "MERANTI": { "KBB": 690000, "KBS": 670000, "KBK": 310000 },
+      "MERANTI Merbau": { "TBD": 1850000 },
+      "MERANTI Balangeran": { "TBD": 810000 },
+      "MERANTI Giam": { "TBD": 810000 },
+      "MERANTI Ki Sereh": { "TBD": 810000 },
+      "MERANTI Kulim": { "TBD": 810000 },
+      "MERANTI Perupuk": { "TBD": 810000 },
+      "INDAH 1": { "TBD": 9200000 },
+      "INDAH 1 Jati": { "KBB": 3500000, "KBS": 1900000, "KBK": 1200000 },
+      "INDAH 2": { "TBD": 1550000 },
+      "INDAH 2 Cendana Gubal": { "TBD": 1100000 },
+      "INDAH 2 Cendana Teras": { "TBD": 10650000 },
+      "INDAH 2 Mentaos": { "TBD": 810000 },
+      "RIMBA CAMPURAN": { "KBB": 390000, "KBS": 370000, "KBK": 310000 },
+      "RIMBA CAMPURAN Kayu Kuning": { "TBD": 760000 }
+    },
+    "Kalimantan":{
+      override: {
+        "Sungkai": { "TBD": 150000 },
+        "Acasia Auricoliformis": { "TBD": 140000 },
+        "Accasia Mangium": { "TBD": 140000 },
+        "Bakau": { "TBD": 135000 },
+        "Balsa": { "TBD": 90000 },
+        "Ekaliptus": { "TBD": 140000 },
+        "Gmelina": { "TBD": 105000 },
+        "Jabon": { "TBD": 140000 },
+        "Karet": { "TBD": 150000 },
+        "Pinus": { "TBD": 165000 },
+        "Sengon": { "TBD": 165000 },
+        "Sengon Buto/Jowo": { "TBD": 165000 },
+        "Waru": { "TBD": 115000 }
+      },
+      "MERANTI": { "KBB": 810000, "KBS": 780000, "KBK": 310000 },
+      "MERANTI Merbau": { "TBD": 1850000 },
+      "MERANTI Balangeran": { "TBD": 810000 },
+      "MERANTI Giam": { "TBD": 810000 },
+      "MERANTI Ki Sereh": { "TBD": 810000 },
+      "MERANTI Kulim": { "TBD": 810000 },
+      "MERANTI Perupuk": { "TBD": 810000 },
+      "INDAH 1": { "TBD": 9200000 },
+      "INDAH 1 Jati": { "KBB": 2000000, "KBS": 1000000, "KBK": 800000 },
+      "INDAH 2": { "TBD": 1550000 },
+      "INDAH 2 Cendana Gubal": { "TBD": 1100000 },
+      "INDAH 2 Cendana Teras": { "TBD": 10650000 },
+      "INDAH 2 Mentaos": { "TBD": 810000 },
+      "RIMBA CAMPURAN": { "KBB": 500000, "KBS": 480000, "KBK": 310000 },
+      "RIMBA CAMPURAN Kayu Kuning": { "TBD": 760000 }
+    },
+    "Sulawesi":{
+      override: {
+        "Jati": { "KBB": 3500000, "KBS": 1900000, "KBK": 1200000 },
+        "Sungkai": { "TBD": 150000 },
+        "Acasia Auricoliformis": { "TBD": 140000 },
+        "Accasia Mangium": { "TBD": 140000 },
+        "Bakau": { "TBD": 135000 },
+        "Balsa": { "TBD": 90000 },
+        "Ekaliptus": { "TBD": 140000 },
+        "Gmelina": { "TBD": 105000 },
+        "Jabon": { "TBD": 140000 },
+        "Karet": { "TBD": 150000 },
+        "Sengon": { "TBD": 165000 },
+        "Sengon Buto/Jowo": { "TBD": 165000 },
+        "Waru": { "TBD": 115000 }
+      },
+      "MERANTI": { "KBB": 690000, "KBS": 670000, "KBK": 310000 },
+      "MERANTI Merbau": { "TBD": 1850000 },
+      "MERANTI Balangeran": { "TBD": 810000 },
+      "MERANTI Giam": { "TBD": 810000 },
+      "MERANTI Ki Sereh": { "TBD": 810000 },
+      "MERANTI Kulim": { "TBD": 810000 },
+      "MERANTI Perupuk": { "TBD": 810000 },
+      "INDAH 1": { "TBD": 9200000 },
+      "INDAH 1 Jati": { "KBB": 3500000, "KBS": 1900000, "KBK": 1200000 },
+      "INDAH 2": { "TBD": 1550000 },
+      "INDAH 2 Cendana Gubal": { "TBD": 1100000 },
+      "INDAH 2 Cendana Teras": { "TBD": 10650000 },
+      "INDAH 2 Mentaos": { "TBD": 810000 },
+      "RIMBA CAMPURAN": { "KBB": 390000, "KBS": 370000, "KBK": 310000 },
+      "RIMBA CAMPURAN Kayu Kuning": { "TBD": 760000 }
+    },
+    "Maluku":{
+      override: {
+        "Sungkai": { "TBD": 150000 },
+        "Acasia Auricoliformis": { "TBD": 140000 },
+        "Accasia Mangium": { "TBD": 140000 },
+        "Bakau": { "TBD": 135000 },
+        "Balsa": { "TBD": 90000 },
+        "Ekaliptus": { "TBD": 140000 },
+        "Gmelina": { "TBD": 105000 },
+        "Jabon": { "TBD": 140000 },
+        "Karet": { "TBD": 150000 },
+        "Pinus": { "TBD": 165000 },
+        "Sengon": { "TBD": 165000 },
+        "Sengon Buto/Jowo": { "TBD": 165000 },
+        "Waru": { "TBD": 115000 }
+      },
+      "MERANTI": { "KBB": 810000, "KBS": 780000, "KBK": 310000 },
+      "MERANTI Merbau": { "TBD": 1850000 },
+      "MERANTI Balangeran": { "TBD": 810000 },
+      "MERANTI Giam": { "TBD": 810000 },
+      "MERANTI Ki Sereh": { "TBD": 810000 },
+      "MERANTI Kulim": { "TBD": 810000 },
+      "MERANTI Perupuk": { "TBD": 810000 },
+      "INDAH 1": { "TBD": 9200000 },
+      "INDAH 1 Jati": { "KBB": 2000000, "KBS": 1000000, "KBK": 800000 },
+      "INDAH 2": { "TBD": 1550000 },
+      "INDAH 2 Cendana Gubal": { "TBD": 1100000 },
+      "INDAH 2 Cendana Teras": { "TBD": 10650000 },
+      "INDAH 2 Mentaos": { "TBD": 810000 },
+      "RIMBA CAMPURAN": { "KBB": 500000, "KBS": 480000, "KBK": 310000 },
+      "RIMBA CAMPURAN Kayu Kuning": { "TBD": 760000 }
+    },
+    "Papua":{
+      override: {
+        "Jati": { "KBB": 3500000, "KBS": 1900000, "KBK": 1200000 },
+        "Sungkai": { "TBD": 150000 },
+        "Acasia Auricoliformis": { "TBD": 140000 },
+        "Accasia Mangium": { "TBD": 140000 },
+        "Bakau": { "TBD": 135000 },
+        "Balsa": { "TBD": 90000 },
+        "Ekaliptus": { "TBD": 140000 },
+        "Gmelina": { "TBD": 105000 },
+        "Jabon": { "TBD": 140000 },
+        "Karet": { "TBD": 150000 },
+        "Pinus": { "TBD": 165000 },
+        "Sengon": { "TBD": 165000 },
+        "Sengon Buto/Jowo": { "TBD": 165000 },
+        "Waru": { "TBD": 115000 }
+      },
+      "MERANTI": { "KBB": 690000, "KBS": 670000, "KBK": 310000 },
+      "MERANTI Merbau": { "TBD": 1850000 },
+      "MERANTI Balangeran": { "TBD": 810000 },
+      "MERANTI Giam": { "TBD": 810000 },
+      "MERANTI Ki Sereh": { "TBD": 810000 },
+      "MERANTI Kulim": { "TBD": 810000 },
+      "MERANTI Perupuk": { "TBD": 810000 },
+      "INDAH 1": { "TBD": 9200000 },
+      "INDAH 1 Jati": { "KBB": 3500000, "KBS": 1900000, "KBK": 1200000 },
+      "INDAH 2": { "TBD": 1550000 },
+      "INDAH 2 Cendana Gubal": { "TBD": 1100000 },
+      "INDAH 2 Cendana Teras": { "TBD": 10650000 },
+      "INDAH 2 Mentaos": { "TBD": 810000 },
+      "RIMBA CAMPURAN": { "KBB": 390000, "KBS": 370000, "KBK": 310000 },
+      "RIMBA CAMPURAN Kayu Kuning": { "TBD": 760000 }
+    },
+  }
+};
+
+const provinsiToWilayah = {
+  // Wilayah 1: Sumatra
+  "Aceh": "Wilayah 1",
+  "Sumatera Utara": "Wilayah 1",
+  "Sumatera Barat": "Wilayah 1",
+  "Riau": "Wilayah 1",
+  "Jambi": "Wilayah 1",
+  "Sumatera Selatan": "Wilayah 1",
+  "Bengkulu": "Wilayah 1",
+  "Lampung": "Wilayah 1",
+  "Kepulauan Bangka Belitung": "Wilayah 1",
+  "Kepulauan Riau": "Wilayah 1",
+
+  // Wilayah 2: Kalimantan
+  "Kalimantan Barat": "Wilayah 2",
+  "Kalimantan Tengah": "Wilayah 2",
+  "Kalimantan Selatan": "Wilayah 2",
+  "Kalimantan Timur": "Wilayah 2",
+  "Kalimantan Utara": "Wilayah 2",
+
+  // Wilayah 3: Sulawesi
+  "Sulawesi Utara": "Wilayah 3",
+  "Sulawesi Tengah": "Wilayah 3",
+  "Sulawesi Selatan": "Wilayah 3",
+  "Sulawesi Tenggara": "Wilayah 3",
+  "Gorontalo": "Wilayah 3",
+  "Sulawesi Barat": "Wilayah 3",
+
+  // Wilayah 4: Maluku & Papua
+  "Maluku": "Wilayah 4",
+  "Maluku Utara": "Wilayah 4",
+  "Papua": "Wilayah 4",
+  "Papua Barat": "Wilayah 4",
+  "Papua Tengah": "Wilayah 4",
+  "Papua Pegunungan": "Wilayah 4",
+  "Papua Barat Daya": "Wilayah 4",
+  "Papua Selatan": "Wilayah 4",
+
+  // Wilayah 5: Jawa, Bali, Nusa Tenggara
+  "DKI Jakarta": "Wilayah 5",
+  "Jawa Barat": "Wilayah 5",
+  "Jawa Tengah": "Wilayah 5",
+  "DI Yogyakarta": "Wilayah 5",
+  "Jawa Timur": "Wilayah 5",
+  "Banten": "Wilayah 5",
+  "Bali": "Wilayah 5",
+  "Nusa Tenggara Barat": "Wilayah 5",
+  "Nusa Tenggara Timur": "Wilayah 5"
+};
+
+const hargaLelang = {
+  "Kayu Lapis": {
+    "Wilayah 1": { 
+      "MERANTI": 1356000,
+      "RIMBA CAMPURAN": 814000,
+      "INDAH 2": 2456000,
+      "INDAH 1 Jati": 5652500
+  },
+    "Wilayah 2": {
+       "MERANTI": 1356000,
+       "RIMBA CAMPURAN": 814000,
+        "INDAH 2": 2456000,
+        "INDAH 1 Jati": 5652500
+        },
+    "Wilayah 3": { 
+      "MERANTI": 1356000,
+      "RIMBA CAMPURAN": 814000,
+      "INDAH 2": 2456000,
+      "INDAH 1 Jati": 5652500
+       },
+    "Wilayah 4": { 
+      "MERANTI": 1140000,
+      "RIMBA CAMPURAN": 611000,
+      "INDAH 2": 2456000,
+      "INDAH 1 Jati": 5652500
+       },
+    "Wilayah 5": { 
+      "MERANTI": 1582000,
+      "RIMBA CAMPURAN": 1131000,
+      "INDAH 2": 2600000,
+      "INDAH 1 Jati": 9045000
+       }
+  },
+  "Kayu Gergajian": {
+    "Wilayah 1": {
+      "MERANTI": 1228500,
+      "RIMBA CAMPURAN": 737000,
+      "INDAH 2": 2223000,
+      "INDAH 1 Jati": 8190000,
+      "MERANTI MERBAU": 3071000,
+      "INDAH 1": 14741000
+    },
+    "Wilayah 2": {
+      "MERANTI": 1228500,
+      "RIMBA CAMPURAN": 737000,
+      "INDAH 2": 2223000,
+      "INDAH 1 Jati": 8190000,
+      "MERANTI MERBAU": 3071000,
+      "INDAH 1": 14741000
+    },
+    "Wilayah 3": {
+      "MERANTI": 1228500,
+      "RIMBA CAMPURAN": 737000,
+      "INDAH 2": 2223000,
+      "INDAH 1 Jati": 8190000,
+      "MERANTI MERBAU": 3071000,
+      "INDAH 1": 14741000
+    },
+    "Wilayah 4": {
+      "MERANTI": 1033000,
+      "RIMBA CAMPURAN": 553000,
+      "INDAH 2": 2223000,
+      "INDAH 1 Jati": 8190000,
+      "MERANTI MERBAU": 3071000,
+      "INDAH 1": 14741000
+    },
+    "Wilayah 5": {
+      "MERANTI": 1433000,
+      "RIMBA CAMPURAN": 1023000,
+      "INDAH 2": 2355000,
+      "INDAH 1 Jati": 8580000,
+      "MERANTI MERBAU": 3071000,
+      "INDAH 1": 14741000
+    }
+  },
+  "Kayu Pacakan": {
+    "Wilayah 1": {
+      "MERANTI": 1083000,
+      "RIMBA CAMPURAN": 650000,
+      "INDAH 2": 1961000,
+      "INDAH 1 Jati": 4865000,
+      "MERANTI MERBAU": 2708000,
+      "INDAH 1": 13000000
+    },
+    "Wilayah 2": {
+      "MERANTI": 1083000,
+      "RIMBA CAMPURAN": 650000,
+      "INDAH 2": 1961000,
+      "INDAH 1 Jati": 4865000,
+      "MERANTI MERBAU": 2708000,
+      "INDAH 1": 13000000
+    },
+    "Wilayah 3": {
+      "MERANTI": 1083000,
+      "RIMBA CAMPURAN": 650000,
+      "INDAH 2": 1961000,
+      "INDAH 1 Jati": 4865000,
+      "MERANTI MERBAU": 2708000,
+      "INDAH 1": 13000000
+    },
+    "Wilayah 4": {
+      "MERANTI": 910000,
+      "RIMBA CAMPURAN": 488000,
+      "INDAH 2": 1961000,
+      "INDAH 1 Jati": 4865000,
+      "MERANTI MERBAU": 2283000,
+      "INDAH 1": 13000000
+    },
+    "Wilayah 5": {
+      "MERANTI": 1264000,
+      "RIMBA CAMPURAN": 903000,
+      "INDAH 2": 2077000,
+      "INDAH 1 Jati": 7223000,
+      "MERANTI MERBAU": 3161000,
+      "INDAH 1": 13542000
+    }
+  }
+};
+
+const biayaPersiapan = {
+  "Wilayah 1": 120000,
+  "Wilayah 2": 130000,
+  "Wilayah 3": 130000,
+  "Wilayah 4": 150000,
+  "Wilayah 5": 170000
+};
+
+function lanjutKontainer() {
+  const namaPelakuUsaha = document.getElementById('namaPelakuUsaha').value;
+  const provinsi = document.getElementById('provinsi').value;
+  const asalKayu = document.getElementById('asalKayu').value;
+  const jenisPerizinan = document.getElementById('jenisPerizinan').value;
+  const jenisOlahan = document.getElementById('jenisOlahan').value;
+  const region = provinsiToRegion[provinsi] || "Jawa dan Madura"; // Default fallback
+  const wilayah = provinsiToWilayah[provinsi] || "Wilayah 5"; // default fallback
+
+console.log("DEBUG:", {
+  namaPelakuUsaha,
+  provinsi,
+  asalKayu,
+  jenisPerizinan,
+  jenisOlahan
+});
+
+  if (!namaPelakuUsaha || !asalKayu || !jenisPerizinan || !provinsi || !jenisOlahan) {
+    alert("Lengkapi semua isian identitas.");
+    return;
+  }
+
+  let targetKontainer = '';
+  if (asalKayu === 'Tumbuh Alami') {
+    targetKontainer = 'kontainer2';
+  } else if (asalKayu === 'Budidaya' && jenisPerizinan === 'PS') {
+    targetKontainer = 'kontainer4';
+  } else {
+    targetKontainer = 'kontainer3';
+  }
+
+  // Simpan semua data ke dalam metadata global
+  window.metadata = {
+    namaPelakuUsaha,
+    provinsi,
+    region,
+    wilayah,
+    asalKayu,
+    jenisPerizinan,
+    jenisOlahan,
+    kontainer: targetKontainer
+  };
+
+  document.getElementById('kontainerIdentitas').style.display = 'none';
+  document.getElementById('btnLanjut').style.display = 'none';
+
+  renderKontainer(targetKontainer);
+}
+
+function renderKontainer(kode) {
+  const meta = window.metadata;
+  const container = document.getElementById("kontainerInput");
+
+  let html = `
+    <fieldset><legend>Informasi Pelaku Usaha</legend>
+    <b>Nama:</b> ${meta.namaPelakuUsaha}<br>
+    <b>Provinsi:</b> ${meta.provinsi}<br>
+    <b>Region:</b> ${meta.region}<br>
+    <b>Wilayah Lelang:</b> ${meta.wilayah}<br>
+    <b>Asal Kayu:</b> ${meta.asalKayu}<br>
+    <b>Jenis Perizinan:</b> ${meta.jenisPerizinan}<br>
+    </fieldset><br>
+
+    <table border='1'>
+  <thead>
+    <tr>
+      <th>Identitas Angkutan</th>
+      <th>Nama Tanaman</th>      
+      <th>Jumlah Batang</th>
+      <th title="Volume akan dikalikan 2 secara otomatis untuk hitung PSDH & DR Kayu Gergajian">
+      Volume (M³) <span style="color: #228B22; cursor: help;">ℹ️</span>
+      </th>
+      <th>Kelompok Jenis</th>
+      <th title="Sortimen Kayu Gergajian hanya TBD dan selain TBD dikategorikan sebagai KBB">
+      Sortimen <span style="color: #228B22; cursor: help;">ℹ️</span>
+      </th>
+      <th>PSDH (Rp)</th>
+      <th>DR (Rp)</th>
+      <th>Aksi</th>
+    </tr>
+  </thead>
+  <tbody id='inputBody'></tbody>
+  <tfoot>
+    <tr>
+      <td colspan="6" style="text-align:right;"><b>Total:</b></td> <!-- Correct colspan -->
+      <td><input id="totalPsdh" type="text" readonly style="text-align:center;"></td>
+      <td><input id="totalDr" type="text" readonly style="text-align:center;"></td>
+      <td></td>
+    </tr>
+  </tfoot>
+</table>
+
+
+    <button onclick='tambahBaris()'>+ Tambah Baris</button>
+    <button onclick='simpanData()'>KALKULASI PSDH+DR KAYU GERGAJIAN</button>
+    <button onclick="generateHasilLelang()">HITUNG BIAYA LELANG</button>
+    
+
+    <div id="rekapSederhana" class="rekap-box" style="display: none;"></div>
+    <div id="tabelHasilLelang" class="rekap-box" style="display:none;"></div>
+    <div id="tombolDownloadCSV" style="display: none; margin-top: 10px;">
+    <button onclick="downloadCSVHasilLelang()">Download CSV Biaya Lelang</button>
+    </div>
+
+    <button onclick="kembaliKeKontainer1()">Kembali</button>
+    `;
+
+  container.innerHTML = html;
+  tambahBaris();
+  document.getElementById('kontainerInput').style.display = 'block';
+
+}
+
+function tambahBaris() {
+  const tbody = document.getElementById("inputBody");
+  const tr = document.createElement("tr");
+  tr.innerHTML = `
+    <td><input type="text" class="identitasAngkutan" oninput="updateBaris(this)"></td>
+    <td>
+    <input list="namaList"
+       class="namaTanaman"
+       style="width: 100%;"
+       onchange="validasiNamaTanaman(this); updateBaris(this)">
+
+    <datalist id="namaList">
+    <option value="MERANTI --------------------">
+    <option value="Agathis">
+    <option value="Balau">
+    <option value="Balau Merah">
+    <option value="Bangkirai">
+    <option value="Balangeran">
+    <option value="Damar">
+    <option value="Durian">
+    <option value="Gia">
+    <option value="Giam">
+    <option value="Jelutung">
+    <option value="Kapur">
+    <option value="Kapur Petanang">
+    <option value="Kenari">
+    <option value="Keruing">
+    <option value="Ki Sereh">
+    <option value="Kulim">
+    <option value="Lembasung">
+    <option value="Malapari">
+    <option value="Matoa">
+    <option value="Medang (MR)">
+    <option value="Meranti Batu">
+    <option value="Meranti Kuning">
+    <option value="Meranti Merah">
+    <option value="Meranti Putih">
+    <option value="Merawan">
+    <option value="Merbau">
+    <option value="Mersawa">
+    <option value="Nyatoh">
+    <option value="Palapi">
+    <option value="Pelawan">
+    <option value="Penjalin">
+    <option value="Perupuk">
+    <option value="Pinang">
+    <option value="Pulai">
+    <option value="Rasamala">
+    <option value="Resak">
+    <option value="Sarangan Batu">
+    <option value="Semantok">
+    <option value="Kelompok Jenis Meranti lainnya">
+    <option value="INDAH 1 --------------------">
+    <option value="Eboni Bergaris">
+    <option value="Eboni Hitam">
+    <option value="Eboni">
+    <option value="Jati">
+    <option value="INDAH 2 --------------------">
+    <option value="Bongin">
+    <option value="Bungur">
+    <option value="Cempaka">
+    <option value="Cempaka Alas">
+    <option value="Cempaka Jati">
+    <option value="Cendana Gubal">
+    <option value="Cendana Teras">
+    <option value="Dahu">
+    <option value="Jati Seberang">
+    <option value="Johar">
+    <option value="Kendal">
+    <option value="Kihiyang">
+    <option value="Kuku">
+    <option value="Kupang">
+    <option value="Lasi">
+    <option value="Mahoni">
+    <option value="Melur">
+    <option value="Membacang">
+    <option value="Mentaos">
+    <option value="Mindi">
+    <option value="Nyirih">
+    <option value="Paru-Paru">
+    <option value="Pasang">
+    <option value="Perepat Darat">
+    <option value="Raja Bunga">
+    <option value="Ramin">
+    <option value="Rengas">
+    <option value="Rengas Burung">
+    <option value="Salimuli">
+    <option value="Santang">
+    <option value="Sawo Kecik">
+    <option value="Sempetir">
+    <option value="Sindur">
+    <option value="Sonobrits">
+    <option value="Sonokeling">
+    <option value="Sonokembang">
+    <option value="Sungkai">
+    <option value="Tanjung">
+    <option value="Tapos">
+    <option value="Tinjau Belukar">
+    <option value="Torem">
+    <option value="Trembesi">
+    <option value="Ulin">
+    <option value="Weru">
+    <option value="Kelompok Jenis INDAH 2 Lainnya">
+    <option value="RIMBA CAMPURAN --------------------">
+    <option value="Acasia Auricoliformis">
+    <option value="Accasia Mangium">
+    <option value="Angsana">
+    <option value="Ara">
+    <option value="Asem-Asem">
+    <option value="Bakau">
+    <option value="Balsa">
+    <option value="Banggeris">
+    <option value="Banitan">
+    <option value="Bayur">
+    <option value="Bendo">
+    <option value="Benuang">
+    <option value="Berumbung">
+    <option value="Bintangur">
+    <option value="Bipa">
+    <option value="Bowoi">
+    <option value="Bugis">
+    <option value="Cemara">
+    <option value="Cenge">
+    <option value="Dara-dara">
+    <option value="Dlisem">
+    <option value="Duabanga">
+    <option value="Ekaliptus">
+    <option value="Flamboyan">
+    <option value="Gamal">
+    <option value="Gelam">
+    <option value="Gempol">
+    <option value="Gerunggang">
+    <option value="Gmelina">
+    <option value="Gopasa">
+    <option value="Jabon">
+    <option value="Jambu-jambu">
+    <option value="Jengkol">
+    <option value="Jering">
+    <option value="Juwet">
+    <option value="Kamiri">
+    <option value="Kapas-kapasan">
+    <option value="Karet">
+    <option value="Kayu Batu">
+    <option value="Kayu Kereta">
+    <option value="Kayu Kuning">
+    <option value="Kecapi">
+    <option value="Kecik">
+    <option value="Kedondong Hutan">
+    <option value="Kelempayan">
+    <option value="Kelumpang">
+    <option value="Kembang Semangkok">
+    <option value="Kempas">
+    <option value="Kenanga">
+    <option value="Kepoh">
+    <option value="Keranji">
+    <option value="Kesambi">
+    <option value="Ketangi">
+    <option value="Ketapang">
+    <option value="Ketimunan">
+    <option value="Klampis">
+    <option value="Lamtoro">
+    <option value="Lancat">
+    <option value="Lara">
+    <option value="Lokus">
+    <option value="Maesopsis">
+    <option value="Mahang">
+    <option value="Mangir">
+    <option value="Medang">
+    <option value="Melaleuca">
+    <option value="Mempisang">
+    <option value="Mendarahan">
+    <option value="Menjalin">
+    <option value="Mentibu">
+    <option value="Merambung">
+    <option value="Mimba/Mimbo">
+    <option value="Nangka">
+    <option value="Pasak linggo">
+    <option value="Pelawan">
+    <option value="Petai">
+    <option value="Pilang">
+    <option value="Pinus">
+    <option value="Pule">
+    <option value="Punak">
+    <option value="Puspa">
+    <option value="Randu">
+    <option value="Rekisi">
+    <option value="Rengas Tembaga">
+    <option value="Salam">
+    <option value="Saninten">
+    <option value="Segawe">
+    <option value="Semangkok">
+    <option value="Sengon">
+    <option value="Sengon Buto/Jowo">
+    <option value="Sentang">
+    <option value="Sepat">
+    <option value="Sesendok">
+    <option value="Simpur">
+    <option value="Sogo">
+    <option value="Surian">
+    <option value="Tales">
+    <option value="Talok">
+    <option value="Tekik">
+    <option value="Tembesu">
+    <option value="Tempinis">
+    <option value="Tenggayun">
+    <option value="Tepis">
+    <option value="Terap">
+    <option value="Terentang">
+    <option value="Terentang Ayam">
+    <option value="Trenguli">
+    <option value="Utup">
+    <option value="Waru">
+    <option value="Winong">
+    <option value="Wunggu">
+    <option value="Kelompok Jenis Rimba Campuran Lainnya">
+    </optgroup>
+    </datalist>
+    </td>
+   
+  <td><input type="number" class="jumlahBatang" oninput="updateBaris(this)" min="0"></td>   
+  <td><input type="number" class="volumeManual" oninput="updateBaris(this)" min="0"></td> 
+  <td><input type="text" class="kelompokJenis" readonly></td>
+  <td><input type="text" class="sortimen" readonly></td>
+  <td><input type="text" class="psdh" readonly></td>
+  <td><input type="text" class="dr" readonly></td>
+  <td><button onclick="this.parentElement.parentElement.remove()">Hapus</button></td>
+
+  `;
+  tbody.appendChild(tr);
+
+  updateTotal();
+}
+
+function validasiNamaTanaman(input) {
+  const val = input.value.trim();
+  const datalist = document.getElementById("namaList");
+  const daftarValid = Array.from(datalist.options).map(opt => opt.value);
+
+  // Cek apakah input cocok dengan salah satu value di datalist
+  const valid = daftarValid.includes(val);
+
+  // Tambahkan pengecualian: value yang mengandung separator tidak boleh dipilih
+  const isSeparator = val.includes("--------------------");
+
+  if (!valid || isSeparator) {
+    alert("Silakan pilih nama tanaman yang valid dari daftar.");
+    input.value = "";
+    input.focus();
+  }
+}
+
+function updateBaris(el) {
+  const invalidChoices = [
+    "MERANTI --------------------",
+    "INDAH 1 --------------------",
+    "INDAH 2 --------------------",
+    "RIMBA CAMPURAN --------------------",
+  ];
+  
+  const val = el.value.trim();
+  if (invalidChoices.includes(val)) {
+    alert("Silakan pilih nama tanaman yang valid.");
+    el.value = "";
+    return;
+  }
+
+  const row = el.closest("tr");
+  const nama = row.querySelector('.namaTanaman').value.trim();
+  const identitasAngkutan = row.querySelector('.identitasAngkutan').value.trim();
+  const jumlahBatangEl = row.querySelector('.jumlahBatang');
+  const volumeManualEl = row.querySelector('.volumeManual');
+
+  let jumlahBatang = jumlahBatangEl.value.trim();
+  if (!/^\d+$/.test(jumlahBatang)) { // RegEx untuk memastikan hanya angka bulat
+        jumlahBatangEl.value = "";  // Bersihkan input jika invalid
+    return;  // Hentikan jika validasi gagal
+  }
+  jumlahBatang = parseInt(jumlahBatang, 10); 
+  
+  // Validasi hanya angka desimal untuk volume manual
+  let volumeManual = parseFloat(volumeManualEl.value);
+  if (isNaN(volumeManual) || volumeManual <= 0) {
+    volumeManualEl.value = "";  // Bersihkan input jika invalid
+    return;  // Hentikan jika validasi gagal
+  }
+
+  // Tentukan kelompok jenis berdasarkan nama
+  const kelompok = Object.keys(kelompokMap).find(k => k.toLowerCase() === nama.toLowerCase());
+  const kelompokJenis = kelompokMap[kelompok] || "RIMBA CAMPURAN";
+
+  let kelompokUtama = "RIMBA CAMPURAN";
+  if (kelompokJenis.includes("MERANTI")) {
+    kelompokUtama = "MERANTI";
+  } else if (kelompokJenis.includes("INDAH 1")) {
+    kelompokUtama = "INDAH 1";
+  } else if (kelompokJenis.includes("INDAH 2")) {
+    kelompokUtama = "INDAH 2";
+  }
+
+  // Deteksi apakah jenis ini masuk kategori TBD
+   const isTBD = /(MERANTI (Belangeran|Giam|Ki Sereh|Kulim|Merbau|Perupuk))|Cendana|Mentaos|Kayu Kuning|INDAH 1$|INDAH 2$/.test(kelompokJenis);
+
+  let sortimen = "TBD";
+  if (isTBD) {
+    sortimen = "TBD"; // TBD
+  } else {
+    sortimen = "KBB"; // KBB
+  }
+  if (nama === "Jati") {
+    sortimen = "KBB"; // Kecualikan Jati agar tidak masuk TBD
+  }
+
+  // Ambil metadata
+  const kontainer = window.metadata.kontainer;
+  const perizinan = window.metadata.jenisPerizinan;
+  const asalKayu = window.metadata.asalKayu;
+
+  const provinsi = document.getElementById("provinsi")?.value || "Jawa Timur";
+  const region = provinsiToRegion[provinsi] || "Jawa dan Madura";
+
+  const kelompokData = hargaPatokan[asalKayu]?.[region] || {};
+  const overrideData = kelompokData.override || {};
+
+  let harga = 0;
+  if (overrideData[nama]) {
+    harga = overrideData[nama][sortimen] || overrideData[nama].TBD || 0;
+  } else {
+    harga = kelompokData[kelompokJenis]?.[sortimen] || kelompokData[kelompokJenis]?.TBD || 0;
+  }
+
+  // Hitung tarif PSDH dan DR
+  let psdhRate = 0, drRate = 0;
+
+  if (kontainer === 'kontainer2') {
+    psdhRate = 0.10;
+
+    if (["PBPH", "PS"].includes(perizinan)) {
+      if (kelompokJenis === "INDAH 1 Jati") {
+        drRate = 0.20;
+      } else if (isTBD) {
+        if (/Balangeran|Giam|Ki Sereh|Kulim|Perupuk/.test(kelompokJenis)) drRate = 0.32;
+        else if (/Merbau/.test(kelompokJenis)) drRate = 0.13;
+        else if (/Cendana Gubal/.test(kelompokJenis)) drRate = 0.025;
+        else if (/Cendana Teras/.test(kelompokJenis)) drRate = 0.025;
+        else if (/INDAH 2 Mentaos/.test(kelompokJenis)) drRate = 0.32;
+        else if (/INDAH 1$/.test(kelompokJenis)) drRate = 0.035;
+        else drRate = 0.17;
+      } else {
+        drRate = (sortimen === "KBK") ? 0.08 : 0.30;
+      }
+    } else {
+      if (kelompokJenis === "INDAH 1 Jati") {
+        drRate = 0.33;
+      } else if (isTBD) {
+        if (/Balangeran|Giam|Ki Sereh|Kulim|Perupuk/.test(kelompokJenis)) drRate = 0.53;
+        else if (/Merbau/.test(kelompokJenis)) drRate = 0.22;
+        else if (/Cendana Gubal/.test(kelompokJenis)) drRate = 0.04;
+        else if (/Cendana Teras/.test(kelompokJenis)) drRate = 0.04;
+        else if (/INDAH 2 Mentaos/.test(kelompokJenis)) drRate = 0.53;
+        else if (/INDAH 1$/.test(kelompokJenis)) drRate = 0.06;
+        else drRate = 0.28;
+      } else {
+        drRate = (sortimen === "KBK") ? 0.13 : 0.50;
+      }
+    }
+
+  } else if (kontainer === 'kontainer3') {
+    psdhRate = 0.06;
+    drRate = 0;
+  } else if (kontainer === 'kontainer4') {
+    psdhRate = 0.03;
+    drRate = 0;
+  }
+
+  const volumeEfektif = volumeManual * 2;
+  const psdhValue = Math.round(volumeEfektif * harga * psdhRate);
+  const drValue = Math.round(volumeEfektif * harga * drRate);
+
+
+  // Update nilai ke kolom input
+  row.querySelector('.kelompokJenis').value = kelompokJenis;
+  row.querySelector('.sortimen').value = sortimen;
+  row.querySelector('.psdh').value = psdhValue.toLocaleString('id-ID');
+  row.querySelector('.dr').value = drValue.toLocaleString('id-ID');
+
+  updateTotal();
+}
+
+function updateTotal() {
+  let totalPsdh = 0;
+  let totalDr = 0;
+  let totalVolume = 0;
+
+  document.querySelectorAll("#inputBody tr").forEach(row => {
+    const psdh = parseInt(row.querySelector('.psdh').value.replace(/\D/g, '')) || 0;
+    const dr = parseInt(row.querySelector('.dr').value.replace(/\D/g, '')) || 0;
+    const vol = parseFloat(row.querySelector('.volumeManual').value) || 0;
+
+    totalPsdh += psdh;
+    totalDr += dr;
+    totalVolume += vol;
+  });
+
+  document.getElementById("totalPsdh").value = totalPsdh.toLocaleString('id-ID');
+  document.getElementById("totalDr").value = totalDr.toLocaleString('id-ID');
+  
+}
+
+function simpanData() {
+  try {
+    const tbody = document.getElementById('inputBody');
+    const rows = tbody.querySelectorAll('tr');
+    const data = [];
+
+    let totalPsdh = 0;
+    let totalDr = 0;
+    let totalVolume = 0;
+    let totalPohon = 0;
+    let totalDenda = 0;
+
+    rows.forEach(row => {
+      const identitasAngkutanEl = row.querySelector('.identitasAngkutan');
+      const namaTanamanEl = row.querySelector('.namaTanaman');      
+      const jumlahBatangEl = row.querySelector('.jumlahBatang');
+      const volumeManualEl = row.querySelector('.volumeManual');
+      const kelompokEl = row.querySelector('.kelompokJenis');
+      const sortimenEl = row.querySelector('.sortimen');
+      const psdhEl = row.querySelector('.psdh');
+      const drEl = row.querySelector('.dr');
+
+      if (!identitasAngkutanEl || !namaTanamanEl ||  !jumlahBatangEl || !volumeManualEl || !psdhEl || !drEl) return;
+
+      const volumeInput = parseFloat(volumeManualEl.value) || 0;
+      const volume = volumeInput * 2;
+      const psdh = parseFloat(psdhEl.value.replace(/[^\d]/g, '')) || 0;
+      const dr = parseFloat(drEl.value.replace(/[^\d]/g, '')) || 0;
+
+
+      totalVolume += volume;
+      totalPsdh += psdh;
+      totalDr += dr;
+      totalPohon += parseInt(jumlahBatangEl.value) || 0;
+
+      
+      data.push({
+        ...window.metadata,
+        namaTanaman: namaTanamanEl.value || '',
+        volume,
+        kelompokJenis: kelompokEl?.value || '',
+        sortimen: sortimenEl?.value || '',
+        psdh,
+        dr,
+        });
+    });
+
+    if (data.length === 0) {
+      alert("Tidak ada data yang dapat disimpan.");
+      return;
+    }
+
+    const totalNilai = totalPsdh + totalDr;
+
+    const totalPohonBulat = Math.floor(totalPohon); // Bulatkan total pohon
+    const totalVolumeTampil = totalVolume.toFixed(4); // 4 angka belakang koma untuk volume
+
+    const rekapDiv = document.getElementById("rekapSederhana");
+    if (rekapDiv) {
+      rekapDiv.innerHTML = `
+        <p><b>Total Batang:</b> ${totalPohonBulat} &nbsp; | 
+        <b>Total Volume KG:</b> ${totalVolumeTampil} m³ &nbsp; | 
+        <b>Total (PSDH + DR)KG:</b> Rp ${totalNilai.toLocaleString('id-ID')}</p>
+      `;
+      rekapDiv.style.display = "block"; // ✅ Tampilkan hanya setelah simpan
+    }
+
+    google.script.run.withSuccessHandler(msg => alert(msg)).saveToSheet(data);
+  } catch (e) {
+    console.error("Error simpanData():", e);
+    alert("Terjadi kesalahan. Silakan periksa konsol.");
+  }
+}
+
+
+function kembaliKeKontainer1() {
+  document.getElementById('kontainerInput').style.display = 'none';
+  document.getElementById('kontainerIdentitas').style.display = 'block';
+  document.getElementById('btnLanjut').style.display = 'inline-block';
+  document.getElementById("rekapSederhana").style.display = "none";
+
+}
+function generateHasilLelang() {
+  const wilayah = window.metadata.wilayah;
+  const jenisOlahan = window.metadata.jenisOlahan;
+
+  const tbody = document.getElementById('inputBody');
+  const rows = tbody.querySelectorAll('tr');
+
+  let html = `
+    <h3>PERHITUNGAN HARGA LIMIT DAN BIAYA PERSIAPAN LELANG KAYU GERGAJIAN</h3>
+    <table border="1" style="width:100%; border-collapse: collapse;">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama Tanaman</th>
+          <th>Kelompok</th>
+          <th>Volume (m³)</th>
+          <th>Harga Limit (Rp/m³)</th>
+          <th>Biaya Persiapan (Rp/m³)</th>
+          <th>Jumlah Harga Limit (Rp)</th>
+          <th>Jumlah Biaya Persiapan (Rp)</th>
+          <th>PSDH (Rp)</th>
+          <th>DR (Rp)</th>
+          <th>Total (Rp)</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  let grandLimit = 0;
+  let grandPrep = 0;
+  let grandPSDH = 0;
+  let grandDR = 0;
+  let grandTotal = 0;
+
+  rows.forEach((row, index) => {
+    const nama = row.querySelector('.namaTanaman')?.value?.trim() || "-";
+    const kelompok = row.querySelector('.kelompokJenis')?.value?.trim() || "RIMBA CAMPURAN";
+
+let kelompokUtama = kelompok.toUpperCase().trim();
+
+if (kelompokUtama.includes("MERANTI")) {
+  kelompokUtama = "MERANTI";
+} else if (kelompokUtama.includes("INDAH 1 JATI")) {
+  kelompokUtama = "INDAH 1 Jati";
+} else if (
+  kelompokUtama.includes("INDAH 1") ||
+  kelompokUtama.includes("EBONI") ||
+  kelompokUtama.includes("EBONI BERGARIS") ||
+  kelompokUtama.includes("EBONI HITAM")
+) {
+  kelompokUtama = "INDAH 1";
+} else if (kelompokUtama.includes("INDAH 2")) {
+  kelompokUtama = "INDAH 2";
+} else if (kelompokUtama.includes("MERBAU")) {
+  kelompokUtama = "MERBAU";
+} else {
+  kelompokUtama = "RIMBA CAMPURAN";
+}
+
+    const volume = parseFloat(row.querySelector('.volumeManual')?.value || "0");
+    const psdh = parseInt(row.querySelector('.psdh')?.value?.replace(/\D/g, "") || "0");
+    const dr = parseInt(row.querySelector('.dr')?.value?.replace(/\D/g, "") || "0");
+    let sortimen = "TBD";
+    if (nama === "Jati") {
+    sortimen = "KBB";
+    }
+    const hargaLimit = hargaLelang?.[jenisOlahan]?.[wilayah]?.[kelompokUtama] || 0;
+    const biayaPrep = biayaPersiapan?.[wilayah] || 0;
+
+    const jumlahLimit = hargaLimit * volume;
+    const jumlahPersiapan = biayaPrep * volume;
+    const total = jumlahLimit + jumlahPersiapan + psdh + dr;
+
+    grandLimit += jumlahLimit;
+    grandPrep += jumlahPersiapan;
+    grandPSDH += psdh;
+    grandDR += dr;
+    grandTotal += total;
+
+    html += `
+      <tr>
+        <td>${index + 1}</td>
+        <td>${nama}</td>
+        <td>${kelompok}</td>
+        <td>${volume.toLocaleString('id-ID', { minimumFractionDigits: 4, maximumFractionDigits: 4 })}</td>
+        <td>${hargaLimit.toLocaleString('id-ID')}</td>
+        <td>${biayaPrep.toLocaleString('id-ID')}</td>
+        <td>${jumlahLimit.toLocaleString('id-ID')}</td>
+        <td>${jumlahPersiapan.toLocaleString('id-ID')}</td>
+        <td>${psdh.toLocaleString('id-ID')}</td>
+        <td>${dr.toLocaleString('id-ID')}</td>
+        <td><strong>${total.toLocaleString('id-ID')}</strong></td>
+      </tr>
+    `;
+  });
+
+  html += `
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="6" style="text-align:right;"><strong>GRAND TOTAL:</strong></td>
+          <td><strong>${grandLimit.toLocaleString('id-ID')}</strong></td>
+          <td><strong>${grandPrep.toLocaleString('id-ID')}</strong></td>
+          <td><strong>${grandPSDH.toLocaleString('id-ID')}</strong></td>
+          <td><strong>${grandDR.toLocaleString('id-ID')}</strong></td>
+          <td><strong>${grandTotal.toLocaleString('id-ID')}</strong></td>
+        </tr>
+      </tfoot>
+    </table>
+  `;
+
+  const hasilDiv = document.getElementById('tabelHasilLelang');
+  hasilDiv.innerHTML = html;
+  hasilDiv.style.display = 'block';
+
+  document.getElementById("tombolDownloadCSV")?.remove(); // jika sudah ada, hapus dulu
+
+  const btn = document.createElement("button");
+  btn.id = "tombolDownloadCSV";
+  btn.textContent = "Download CSV Biaya Lelang";
+  btn.onclick = downloadCSVHasilLelang;
+
+  const parent = document.getElementById("kontainerInput");
+  const kembaliBtn = parent.querySelector("button[onclick='kembaliKeKontainer1()']");
+  parent.insertBefore(btn, kembaliBtn); // tampilkan di kiri tombol kembali
+
+  document.getElementById("tombolDownloadCSV").style.display = "block";
+
+}
+
+function downloadCSVHasilLelang() {
+  const rows = document.querySelectorAll("#tabelHasilLelang table tbody tr");
+  if (!rows.length) {
+    alert("Tidak ada data untuk diunduh.");
+    return;
+  }
+
+  const meta = window.metadata || {};
+  let csv = `DATA PELAKU USAHA\n`;
+  csv += `Nama Pelaku Usaha:,${meta.namaPelakuUsaha || "-"}\n`;
+  csv += `Provinsi:,${meta.provinsi || "-"}\n`;
+  csv += `Region PSDH-DR:,${meta.region || "-"}\n`;
+  csv += `Wilayah Lelang:,${meta.wilayah || "-"}\n`;
+  csv += `Asal Kayu:,${meta.asalKayu || "-"}\n`;
+  csv += `Jenis Perizinan:,${meta.jenisPerizinan || "-"}\n`;
+  csv += `Jenis Olahan:,${meta.jenisOlahan || "-"}\n\n`;
+
+  csv += "No,Nama Tanaman,Kelompok,Volume (m3),Harga Limit,Biaya Persiapan,Jumlah Limit,Jumlah Persiapan,PSDH,DR,Total\n";
+
+  let totalLimit = 0, totalPersiapan = 0, totalPSDH = 0, totalDR = 0, totalSemua = 0;
+
+  rows.forEach(row => {
+    const cols = row.querySelectorAll("td");
+
+    // Ambil teks bersih dari setiap kolom
+  const data = Array.from(cols).map((col, i) => {
+  const text = col.textContent.trim();
+
+  if (i === 3) {
+    // Volume column: ensure always 4 decimals with dot as decimal separator
+    const clean = text.replace(/\./g, "").replace(/,/g, ".");
+    const vol = parseFloat(clean);
+    return isNaN(vol) ? "0.0000" : vol.toFixed(4);
+  }
+
+  if (i >= 4) {
+    // Other number columns: strip Rp, thousand separators, fix decimals
+    return text.replace(/Rp\s?/g, "").replace(/\./g, "").replace(/,/g, ".");
+  }
+
+  return text;
+});
+
+    // Perhitungan numerik tetap pakai parsing dari data
+    const jumlahLimit = parseFloat(data[6]) || 0;
+    const jumlahPrep = parseFloat(data[7]) || 0;
+    const psdh = parseFloat(data[8]) || 0;
+    const dr = parseFloat(data[9]) || 0;
+    const total = parseFloat(data[10]) || 0;
+
+    totalLimit += jumlahLimit;
+    totalPersiapan += jumlahPrep;
+    totalPSDH += psdh;
+    totalDR += dr;
+    totalSemua += total;
+
+    csv += data.join(",") + "\n";
+  });
+
+  // Tambahkan baris total
+  csv += "\nRINGKASAN TOTAL\n";
+  csv += `Total Jumlah Limit:,${totalLimit}\n`;
+  csv += `Total Biaya Persiapan:,${totalPersiapan}\n`;
+  csv += `Total PSDH:,${totalPSDH}\n`;
+  csv += `Total DR:,${totalDR}\n`;
+  csv += `Total Keseluruhan:,${totalSemua}\n`;
+
+  // Unduh sebagai file CSV
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.setAttribute("href", url);
+  link.setAttribute("download", "rekap_lelang_kayu_gergajian.csv");
+  link.style.display = "none";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+  </script>
+</body>
+</html>
